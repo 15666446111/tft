@@ -113,12 +113,10 @@ class ShareController extends Controller
 
             $list = empty($list) ? $adminPoster : $list;
 
-            if(!$list or empty($list)) return response()->json(['success'=>['message' => '暂无素材可以分享!', 'data' => array()]]);
+            if(!$list or empty($list)) 
+                return response()->json(['success'=>['message' => '暂无素材可以分享!', 'data' => array()]]);
 
-            // 分享地址
-            $Url = \App\AdminSetting::where('operate_number', $request->user->operate)->value('register_merchant');
-
-            if($Url == null or $Url=="") return response()->json(['error'=>['message' => '无配置商户注册地址!', 'data' => array()]]);
+            $Url = "http://".$_SERVER["HTTP_HOST"]."/merchant/".Hashids::encode($request->user->id);
             
             // 二维码地址
             $CodePath = public_path('/share/'.$request->user->id.'/qrcodes/');
@@ -148,7 +146,6 @@ class ShareController extends Controller
                     $BackGroud=imagecreatefromgif(storage_path('app/public/'.$list->getOriginal('images')));
                     break;
             }
-
 
             // 合成图片
             //$BackGroud =  imagecreatefromjpeg(storage_path('app/public/'.$list->image));

@@ -51,6 +51,7 @@ Route::prefix('V1')->group(function () {
      * @version [< 首页 >] [<  分享模块 生成分享海报 >]
      */
     Route::middleware('AuthToken')->get('/team_share',      'V1\ShareController@team');          // 首页 - 团队扩展
+    Route::middleware('AuthToken')->get('/mach_share',      'V1\ShareController@merchant');      // 我的 - 商户注册
 
 
     Route::middleware('AuthToken')->get('/bigMcc',          'V1\MccController@bigMcc');          // 商户注册 - 获取MCC
@@ -62,25 +63,23 @@ Route::prefix('V1')->group(function () {
 
     Route::middleware('AuthToken')->post('/net-in',         'V1\MerchantNetController@netIn');   // 商户注册 - 注册商户
 
-    Route::post('/net-rate',         'V1\MerchantNetController@rate');  // 终端费率设置
-    Route::post('/temial-ded',       'V1\MerchantNetController@deduct');// 终端机具扣费
 
-    Route::post('/query-blance',     'V1\MerchantNetController@queryBlance');  // 查詢商戶餘額
-    Route::post('/with-blance',      'V1\MerchantNetController@drawBlance');  // 商戶余额提现
 
-    Route::post('/query-cash',       'V1\MerchantNetController@queryCash'); // 查询代理商分润
+    Route::post('/net-rate',         'V1\MerchantNetController@rate');          // 终端费率设置
+    Route::post('/temial-ded',       'V1\MerchantNetController@deduct');        // 终端机具扣费
+    Route::post('/query-blance',     'V1\MerchantNetController@queryBlance');   // 查詢商戶餘額
+    Route::post('/with-blance',      'V1\MerchantNetController@drawBlance');    // 商戶余额提现
+    Route::post('/query-cash',       'V1\MerchantNetController@queryCash');     // 查询代理商分润
 
     /**
      * 对账单
      */
     Route::post('/file-upload',      'V1\MerchantNetController@fileUpload'); // 对账单
+    Route::post('/temial-deddel',    'V1\MerchantNetController@deduct');// 终端机具扣费
 
-    
-    Route::post('/temial-deddel',       'V1\MerchantNetController@deduct');// 终端机具扣费
 
     Route::middleware('AuthToken')->get('/getNoBindMerchant', 'V1\MerchantController@getNoBindList'); // 商户绑定 - 商户列表
     Route::middleware('AuthToken')->get('/getNoBindMachines', 'V1\MerchantController@getNoBindMachines'); // 商户绑定 - 终端列表
-
     Route::middleware('AuthToken')->post('/bindMerchant',      'V1\MerchantController@bindMerchant');  // 商户绑定 - 绑定终端
 
 

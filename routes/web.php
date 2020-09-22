@@ -71,13 +71,23 @@ Route::get('/api/getPolicyGroups', 		'AdminApiController@getPolicyGroups');
  */
 Route::get('/team/{code}', 'RegisterController@team');
 
-
 /**
  * @version [<团队邀请人注册 扫描二维码>] [<description>]
  * @author  [Pudding] <[755969423@qq.com]>
  * @version [<会员注册>] [<description>]
  */
 Route::post('/team/{code}', 'RegisterController@team_in')->name('register');
+
+/**
+ * @version [< 商户注册 代理商分享注册二维码 由用户自主注册 >] [<description>]
+ * @author  [Pudding] <[755969423@qq.com]>
+ * @version [< 商户注册 >] [<description>]
+ */
+Route::get('/merchant/{code}', 'MerchantController@register');
+
+
+
+
 
 // 注册发送验证码
 Route::post('/getCode', 	'RegisterController@code');

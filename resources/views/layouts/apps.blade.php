@@ -23,6 +23,8 @@
 
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     
+    <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.css') }}">
+
     <!-- DIY Css-->
     <link rel="stylesheet" href="{{ asset('css/apps.css') }}">
 
@@ -36,7 +38,7 @@
     <!-- body 最后 -->
     <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>
-
+    <script src="http://www.jqweui.cn/dist/js/city-picker.js"></script>
     <!-- DIY Javascript-->
     <script src="{{ asset('js/apps.js') }}" defer></script>
 
